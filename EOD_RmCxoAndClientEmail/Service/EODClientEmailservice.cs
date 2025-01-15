@@ -985,7 +985,7 @@ namespace EOD_ClientEmail.Service
                                     from credential in credJoin.DefaultIfEmpty()
 
                                     where a.Isactive == true && b.Isactive == true && c.IsActive == true
-                                      && b.Exchange == "11111100" || b.Exchange == "11111200"
+                                      && (b.Exchange == "11111100" || b.Exchange == "11111200")
                                     && (b.TrxDate) == todayDatestring
                                     select new
                                     {
