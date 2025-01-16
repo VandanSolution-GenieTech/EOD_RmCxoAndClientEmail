@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <AssemblyName>OMS_EodSummaryMail</AssemblyName>
     <UserSecretsId>dotnet-EOD_RmCxoAndClientEmail-37de81d8-4476-479c-aec0-a2d8afa43139</UserSecretsId>
   </PropertyGroup>
 
