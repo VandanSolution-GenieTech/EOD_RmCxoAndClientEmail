@@ -16,7 +16,7 @@ public class Program
                 // Register application-specific services
                 services.AddScoped<IEODClientEmailservice, EODClientEmailservice>();
                 services.AddScoped<NeoNexusBrsContext>();
-                services.AddScoped<IErrorLogService, ErrorLogService>();
+                services.AddSingleton<IErrorLogService, ErrorLogService>();
 
                 // Register configuration for dependency injection
                 services.AddSingleton<IConfiguration>(context.Configuration);

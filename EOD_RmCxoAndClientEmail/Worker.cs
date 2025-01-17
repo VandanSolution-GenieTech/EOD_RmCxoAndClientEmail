@@ -27,7 +27,7 @@ namespace EOD_RmCxoAndClientEmail
                     List<TimeSpan> _executionTimes = _configuration.GetSection("ExecutionSettings:ExecutionTimes").Get<List<string>>().Select(TimeSpan.Parse).ToList();
                    TimeSpan timeNow = DateTime.Now.TimeOfDay;
 
-                    if (_executionTimes.Any(x => x.Hours == timeNow.Hours && x.Minutes == timeNow.Minutes))
+                    if(_executionTimes.Any(x => x.Hours == timeNow.Hours && x.Minutes == timeNow.Minutes))
                     {
                         _logger.LogInformation("Executing service task at: {time}", timeNow);
 
@@ -36,8 +36,9 @@ namespace EOD_RmCxoAndClientEmail
                             try
                             {
                                 var bankerService = scope.ServiceProvider.GetRequiredService<IEODClientEmailservice>();
-                                await bankerService.GetOrderHistoryForClient();
-                                await bankerService.GetOrderHistory();
+                                await bankerService.GetOrderHistoryForClient(false);
+                                //await bankerService.GetOrderHistory();
+                                await bankerService.GetOrderHistoryForClient(true);
                             }
                             catch (Exception ex)
                             {

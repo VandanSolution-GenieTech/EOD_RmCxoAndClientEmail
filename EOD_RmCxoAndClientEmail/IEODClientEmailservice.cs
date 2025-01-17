@@ -6,7 +6,7 @@ namespace EOD_ClientEmail
 {
     public interface IEODClientEmailservice
     {
-        Task GetOrderHistoryForClient();
+        Task GetOrderHistoryForClient(bool ismailtocxo);
         Task GetOrderHistory();
     }
 }
