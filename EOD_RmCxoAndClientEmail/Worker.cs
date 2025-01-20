@@ -25,7 +25,7 @@ namespace EOD_RmCxoAndClientEmail
                 {
                
                     List<TimeSpan> _executionTimes = _configuration.GetSection("ExecutionSettings:ExecutionTimes").Get<List<string>>().Select(TimeSpan.Parse).ToList();
-                   TimeSpan timeNow = DateTime.Now.TimeOfDay;
+                     TimeSpan timeNow = DateTime.Now.TimeOfDay;
 
                     if(_executionTimes.Any(x => x.Hours == timeNow.Hours && x.Minutes == timeNow.Minutes))
                     {
@@ -36,9 +36,9 @@ namespace EOD_RmCxoAndClientEmail
                             try
                             {
                                 var bankerService = scope.ServiceProvider.GetRequiredService<IEODClientEmailservice>();
-                                await bankerService.GetOrderHistoryForClient(false);
-                                //await bankerService.GetOrderHistory();
-                                await bankerService.GetOrderHistoryForClient(true);
+                               await bankerService.SendOrderEmailToClient();// send mail to the client
+                                await bankerService.SendOrderMailToCxo();// send mail to cxo
+                                
                             }
                             catch (Exception ex)
                             {
